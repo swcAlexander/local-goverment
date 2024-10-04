@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OpenStreetMap</title>
     <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
-        #map { width: 100%; min-height: 36vw;}
+      #map {
+        width: 100%;
+        height: 70vb;
+      }
     </style>
     <link rel="stylesheet" href="./index.css" />
   </head>
@@ -16,123 +21,172 @@
     <header class="header">
       <div class="container">
         <a href="./" class="logo">
-            <img src="./images/Frame 1321314720.svg" alt="" width="48px" />
-            <p class="logo-par">LOCAL GOVERMANT</p>
+          <img src="./images/Frame 1321314720.svg" alt="" width="48px" />
+          <p class="logo-par">LOCAL GOVERNMENT</p>
         </a>
-      <nav class="header-nav">
-        <ul class="header-nav__list">
+        <nav class="header-nav">
+          <ul class="header-nav__list">
             <li class="header-nav__item"><a href="./">Kulykovychi</a></li>
-            <li class="header-nav__item"><a href="./pages/compare.html">Exel compare</a></li>
-            <li class="header-nav__item"><a href="./pages/about.html">About</a></li>
+            <li class="header-nav__item">
+              <a href="./pages/compare.html">Excel compare</a>
+            </li>
+            <li class="header-nav__item">
+              <a href="./pages/about.html">About</a>
+            </li>
+          </ul>
+        </nav>
+        <button
+          class="menu_toggle is_open_menu"
+          id="menu_toggle"
+          aria-controls="mobile_menu">
+          <svg
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              fillRule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clipRule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="mobile_menu" class="menu_container">
+        <button id="menu_toggle_close" class="menu_toggle-close hidden">
+          <svg
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24">
+            <path
+              d="M18 6L6 18M6 6l12 12"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <ul id="main_menu" class="mobile_menu">
+          <li><a href="./index.html" class="link">Kulykovychi</a></li>
+          <li><a href="./pages/compare.html" class="link">Excel compare</a></li>
+          <li><a href="./pages/about.html" class="link">About</a></li>
         </ul>
       </div>
-      </nav>
     </header>
     <main>
-      <div class="container column">
+      <section class="container column">
         <h1 class="hidden">Main page</h1>
-        <div id="map"></div>      
-        
-      </div>
+        <div id="map" class="main-content"></div>
+      </section>
     </main>
-        <footer class="footer">
-        <div class="container">
-            <div class="footer__content">
-            <a href="./" class="footer__logo">
-                <span class="logo-par footer__logo--color-white">LOCAL GOVERMANT</span>
-            </a>
-            <address class="footer__address">
-                <ul class="footer__list list">
-                <li>
-                    <p class="footer__text">с. Куликовичі, вул. Перемоги, 12</p>
-                    <p class="footer__text">Луцький район, Волинська область</p>
-                </li>
-                <li><a class="footer__item">kulikovychi@gmail.com</a></li>
-                <li><a class="footer__item">+38 067 760 94 88</a></li>
-                </ul>
-            </address>
-            </div>
-            <div class="social-container">
-            <h3 class="social-container__title">Приєднуйтесь</h3>
-            <ul class="social-links">
-                <li class="social-links__item">
-                <a href="/" class="social-links__link">
-                    <svg class="social-links__icon">
-                    <use
-                        href="./images/icons.svg#icon-instagram"
-                        width="20px"
-                        height="20px"></use>
-                    </svg>
-                </a>
-                </li>
-                <li class="social-links__item">
-                <a href="/" class="social-links__link">
-                    <svg class="social-links__icon">
-                    <use
-                        href="./images/icons.svg#icon-twitter"
-                        width="20px"
-                        height="20px"></use>
-                    </svg>
-                </a>
-                </li>
-                <li class="social-links__item">
-                <a href="/" class="social-links__link">
-                    <svg class="social-links__icon">
-                    <use
-                        href="./images/icons.svg#icon-facebook"
-                        width="20px"
-                        height="20px"></use>
-                    </svg>
-                </a>
-                </li>
-                <li class="social-links__item">
-                <a href="/" class="social-links__link">
-                    <svg class="social-links__icon">
-                    <use
-                        href="./images/icons.svg#icon-linkedin"
-                        width="20px"
-                        height="20px"></use>
-                    </svg>
-                </a>
-                </li>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__content">
+          <a href="./" class="footer__logo">
+            <span class="logo-par footer__logo--color-white"
+              >LOCAL GOVERMANT</span
+            >
+          </a>
+          <address class="footer__address">
+            <ul class="footer__list list">
+              <li>
+                <p class="footer__text">с. Куликовичі, вул. Перемоги, 12</p>
+                <p class="footer__text">Луцький район, Волинська область</p>
+              </li>
+              <li><a class="footer__item">kulikovychi@gmail.com</a></li>
+              <li><a class="footer__item">+38 067 760 94 88</a></li>
             </ul>
-            </div>
-            <div class="mailing-container">
-            <span class="mailing-container__text">Підпишіться на розсилку</span>
-            <form class="mailing-container__form">
-                <label class="mailing-container__label">
-                <input
-                    type="email"
-                    class="mailing-container__input"
-                    placeholder="E-mail" />
-                </label>
-                <button type="submit" class="button button-sumbit">
-                <span class="button-text">Підписатися</span>
-                </button>
-            </form>
-            </div>
+          </address>
         </div>
+        <div class="social-container">
+          <h3 class="social-container__title">Приєднуйтесь</h3>
+          <ul class="social-links">
+            <li class="social-links__item">
+              <a href="/" class="social-links__link">
+                <svg class="social-links__icon">
+                  <use
+                    href="./images/icons.svg#icon-instagram"
+                    width="20px"
+                    height="20px"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-links__item">
+              <a href="/" class="social-links__link">
+                <svg class="social-links__icon">
+                  <use
+                    href="./images/icons.svg#icon-twitter"
+                    width="20px"
+                    height="20px"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-links__item">
+              <a href="/" class="social-links__link">
+                <svg class="social-links__icon">
+                  <use
+                    href="./images/icons.svg#icon-facebook"
+                    width="20px"
+                    height="20px"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-links__item">
+              <a href="/" class="social-links__link">
+                <svg class="social-links__icon">
+                  <use
+                    href="./images/icons.svg#icon-linkedin"
+                    width="20px"
+                    height="20px"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="mailing-container">
+          <span class="mailing-container__text">Підпишіться на розсилку</span>
+          <form class="mailing-container__form">
+            <label class="mailing-container__label">
+              <input
+                type="email"
+                class="mailing-container__input"
+                placeholder="E-mail" />
+            </label>
+            <button type="submit" class="button button-sumbit">
+              <span class="button-text">Підписатися</span>
+            </button>
+          </form>
+        </div>
+      </div>
     </footer>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <script>
-    const map = L.map('map').setView([51.1600, 25.7890], 10); // Київ
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-    }).addTo(map);
-    L.marker([51.1600, 25.7890]).addTo(map)
-      .bindPopup('Це Куликовичі')
-      .openPopup();
-    const realtime = L.realtime({
-        url: 'https://example.com/geojson', // URL з даними у форматі GeoJSON
-        crossOrigin: true,
-        type: 'json'
-    }, {
-        interval: 3000 // Оновлення кожні 3 секунди
-    }).addTo(map);
+    <script>
+      const map = L.map('map').setView([51.16, 25.789], 10); // Київ
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+      }).addTo(map);
+      L.marker([51.16, 25.789])
+        .addTo(map)
+        .bindPopup('Це Куликовичі')
+        .openPopup();
+      const realtime = L.realtime(
+        {
+          url: 'https://example.com/geojson', // URL з даними у форматі GeoJSON
+          crossOrigin: true,
+          type: 'json',
+        },
+        {
+          interval: 3000, // Оновлення кожні 3 секунди
+        }
+      ).addTo(map);
 
-    realtime.on('update', function() {
+      realtime.on('update', function () {
         map.fitBounds(realtime.getBounds(), { maxZoom: 12 });
-    });
-  </script>
+      });
+    </script>
+    <script src="./js/menu/openMenu.js"></script>
   </body>
 </html>
