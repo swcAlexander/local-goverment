@@ -1,64 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenStreetMap</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { width: 100%; min-height: 36vw;}
+    </style>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XLSX Comparator</title>
-    <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="./index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-</head>
-
-<body>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="./" class="logo">
+            <img src="./images/Frame 1321314720.svg" alt="" width="48px" />
+            <p class="logo-par">LOCAL GOVERMANT</p>
+        </a>
+      <nav class="header-nav">
+        <ul class="header-nav__list">
+            <li class="header-nav__item"><a href="./">Kulykovychi</a></li>
+            <li class="header-nav__item"><a href="./pages/compare.html">Exel compare</a></li>
+            <li class="header-nav__item"><a href="./pages/about.html">About</a></li>
+        </ul>
+      </div>
+      </nav>
+    </header>
     <main>
-        <h1>Exel Compare</h1>
-        <form id="compareForm">
-            <label for="file1">File 1:</label>
-            <div class="tooltip">
-                <input type="file" accept=".xlsx" id="file1">
-                <span class="tooltiptext">Сюди вставляємо файл з податкової</span>
-            </div>
-
-            <label for="file2">File 2:</label>
-            <div class="tooltip">
-                <input type="file" accept=".xlsx" id="file2">
-                <span class="tooltiptext">Сюди вставляємо файл з нашою базою даних</span>
-            </div>
-
-            <label for="sheet1">Sheet of first file:</label>
-            <div class="tooltip">
-                <input type="number" id="sheet1">
-                <span class="tooltiptext">Вибираємо сторінку, або листок у першому файлі. Прописуємо цифрою, наприклад, якщо хочемо вибрати перший листок, пишемо
-                : 1</span>
-            </div>
-
-            <label for="sheet2">Sheet of second file:</label>
-            <div class="tooltip">
-                <input type="number" id="sheet2">
-                <span class="tooltiptext">Вибираємо сторінку, або листок у нашій базі даних. Прописуємо цифрою, наприклад, якщо хочемо вибрати перший листок,
-                пишемо : 1</span>
-            </div>
-
-            <label for="column1">Column of first file's sheet:</label>
-            <div class="tooltip">
-                <input type="number" id="column1">
-                <span class="tooltiptext">Вибираємо колонку у файлі з податкової, яку будемо прівнювати. Зазвичай це колонка з кодом. Прописуємо цифрою,
-                наприклад, якщо хочемо вибрати колонку А - вона є першою колонкую на листку - пишемо : 1</span>
-            </div>
-
-            <label for="column2">Column of second file's sheet:</label>
-            <div class="tooltip">
-                <input type="number" id="column2">
-                <span class="tooltiptext">Вибираємо колонку у файлі з нашою базою даних. Зазвичай це колонка з кодом. Прописуємо цифрою, наприклад, якщо хочемо
-                вибрати колонку А - вона є першою колонкую на листку - пишемо : 1</span>
-            </div>
-
-            <button type="submit">Compare Files</button>
-        </form>
+      <div class="container column">
+        <h1 class="hidden">Main page</h1>
+        <div id="map"></div>      
+        
+      </div>
     </main>
+        <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+            <a href="./" class="footer__logo">
+                <span class="logo-par footer__logo--color-white">LOCAL GOVERMANT</span>
+            </a>
+            <address class="footer__address">
+                <ul class="footer__list list">
+                <li>
+                    <p class="footer__text">с. Куликовичі, вул. Перемоги, 12</p>
+                    <p class="footer__text">Луцький район, Волинська область</p>
+                </li>
+                <li><a class="footer__item">kulikovychi@gmail.com</a></li>
+                <li><a class="footer__item">+38 067 760 94 88</a></li>
+                </ul>
+            </address>
+            </div>
+            <div class="social-container">
+            <h3 class="social-container__title">Приєднуйтесь</h3>
+            <ul class="social-links">
+                <li class="social-links__item">
+                <a href="/" class="social-links__link">
+                    <svg class="social-links__icon">
+                    <use
+                        href="./images/icons.svg#icon-instagram"
+                        width="20px"
+                        height="20px"></use>
+                    </svg>
+                </a>
+                </li>
+                <li class="social-links__item">
+                <a href="/" class="social-links__link">
+                    <svg class="social-links__icon">
+                    <use
+                        href="./images/icons.svg#icon-twitter"
+                        width="20px"
+                        height="20px"></use>
+                    </svg>
+                </a>
+                </li>
+                <li class="social-links__item">
+                <a href="/" class="social-links__link">
+                    <svg class="social-links__icon">
+                    <use
+                        href="./images/icons.svg#icon-facebook"
+                        width="20px"
+                        height="20px"></use>
+                    </svg>
+                </a>
+                </li>
+                <li class="social-links__item">
+                <a href="/" class="social-links__link">
+                    <svg class="social-links__icon">
+                    <use
+                        href="./images/icons.svg#icon-linkedin"
+                        width="20px"
+                        height="20px"></use>
+                    </svg>
+                </a>
+                </li>
+            </ul>
+            </div>
+            <div class="mailing-container">
+            <span class="mailing-container__text">Підпишіться на розсилку</span>
+            <form class="mailing-container__form">
+                <label class="mailing-container__label">
+                <input
+                    type="email"
+                    class="mailing-container__input"
+                    placeholder="E-mail" />
+                </label>
+                <button type="submit" class="button button-sumbit">
+                <span class="button-text">Підписатися</span>
+                </button>
+            </form>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([51.1600, 25.7890], 10); // Київ
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+    L.marker([51.1600, 25.7890]).addTo(map)
+      .bindPopup('Це Куликовичі')
+      .openPopup();
+    const realtime = L.realtime({
+        url: 'https://example.com/geojson', // URL з даними у форматі GeoJSON
+        crossOrigin: true,
+        type: 'json'
+    }, {
+        interval: 3000 // Оновлення кожні 3 секунди
+    }).addTo(map);
 
-    <script type="module" src="./index.js"></script>
-</body>
-
+    realtime.on('update', function() {
+        map.fitBounds(realtime.getBounds(), { maxZoom: 12 });
+    });
+  </script>
+  </body>
 </html>
