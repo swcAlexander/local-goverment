@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XLSX Comparator</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Exel Compare</h1>
+        <form id="compareForm">
+            <label for="file1">File 1:</label>
+            <div class="tooltip">
+                <input type="file" accept=".xlsx" id="file1">
+                <span class="tooltiptext">Сюди вставляємо файл з податкової</span>
+            </div>
+
+            <label for="file2">File 2:</label>
+            <div class="tooltip">
+                <input type="file" accept=".xlsx" id="file2">
+                <span class="tooltiptext">Сюди вставляємо файл з нашою базою даних</span>
+            </div>
+
+            <label for="sheet1">Sheet of first file:</label>
+            <div class="tooltip">
+                <input type="number" id="sheet1">
+                <span class="tooltiptext">Вибираємо сторінку, або листок у першому файлі. Прописуємо цифрою, наприклад, якщо хочемо вибрати перший листок, пишемо
+                : 1</span>
+            </div>
+
+            <label for="sheet2">Sheet of second file:</label>
+            <div class="tooltip">
+                <input type="number" id="sheet2">
+                <span class="tooltiptext">Вибираємо сторінку, або листок у нашій базі даних. Прописуємо цифрою, наприклад, якщо хочемо вибрати перший листок,
+                пишемо : 1</span>
+            </div>
+
+            <label for="column1">Column of first file's sheet:</label>
+            <div class="tooltip">
+                <input type="number" id="column1">
+                <span class="tooltiptext">Вибираємо колонку у файлі з податкової, яку будемо прівнювати. Зазвичай це колонка з кодом. Прописуємо цифрою,
+                наприклад, якщо хочемо вибрати колонку А - вона є першою колонкую на листку - пишемо : 1</span>
+            </div>
+
+            <label for="column2">Column of second file's sheet:</label>
+            <div class="tooltip">
+                <input type="number" id="column2">
+                <span class="tooltiptext">Вибираємо колонку у файлі з нашою базою даних. Зазвичай це колонка з кодом. Прописуємо цифрою, наприклад, якщо хочемо
+                вибрати колонку А - вона є першою колонкую на листку - пишемо : 1</span>
+            </div>
+
+            <button type="submit">Compare Files</button>
+        </form>
+    </main>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
