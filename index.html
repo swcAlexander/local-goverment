@@ -181,6 +181,10 @@
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
       }).addTo(map);
+      L.marker([51.760842, 9.404996])
+        .addTo(map)
+        .bindPopup('Boffzen')
+        .openPopup();
 
       // Ініціалізація featureGroup для зберігання всіх доданих об'єктів
       const drawnItems = new L.FeatureGroup();
