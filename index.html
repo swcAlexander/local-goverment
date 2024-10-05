@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OpenStreetMap</title>
     <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
     <style>
       #map {
         width: 100%;
         height: 70vb;
+      }
+      .context-menu {
+        position: absolute;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 1000;
+        display: none;
       }
     </style>
     <link rel="stylesheet" href="./index.css" />
@@ -79,7 +88,10 @@
     <main>
       <section class="container column">
         <h1 class="hidden">Main page</h1>
-        <div id="map" class="main-content"></div>
+        <div id="map"></div>
+        <div id="context-menu" class="context-menu">
+          <button id="add-marker">Додати об'єкт</button>
+        </div>
       </section>
     </main>
     <footer class="footer">
@@ -162,29 +174,74 @@
         </div>
       </div>
     </footer>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+
     <script>
-      const map = L.map('map').setView([51.16, 25.789], 10); // Київ
+      // Ініціалізація карти
+      const map = L.map('map').setView([51.16028, 25.788378], 13);
+
+      // Додаємо шар OpenStreetMap
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
       }).addTo(map);
-      L.marker([51.16, 25.789])
-        .addTo(map)
-        .bindPopup('Це Куликовичі')
-        .openPopup();
-      const realtime = L.realtime(
-        {
-          url: 'https://example.com/geojson', // URL з даними у форматі GeoJSON
-          crossOrigin: true,
-          type: 'json',
-        },
-        {
-          interval: 3000, // Оновлення кожні 3 секунди
-        }
-      ).addTo(map);
 
-      realtime.on('update', function () {
-        map.fitBounds(realtime.getBounds(), { maxZoom: 12 });
+      // Ініціалізація featureGroup для зберігання всіх доданих об'єктів
+      const drawnItems = new L.FeatureGroup();
+      map.addLayer(drawnItems);
+
+      // Налаштування для інструментів малювання (додавання точок, ліній та полігонів)
+      const drawControl = new L.Control.Draw({
+        edit: {
+          featureGroup: drawnItems,
+          remove: true, // Можливість видалення об'єктів
+        },
+        draw: {
+          polygon: {
+            allowIntersection: false, // Не дозволяти перетин полігонів
+            showArea: true, // Показувати площу полігону
+          },
+          polyline: true, // Лінії
+          circle: false, // Вимкнено додавання кіл
+          rectangle: true, // Додавання прямокутників
+          marker: true, // Додавання точок
+        },
+      });
+      map.addControl(drawControl);
+
+      // Обробка подій додавання нових об'єктів
+      map.on(L.Draw.Event.CREATED, function (event) {
+        const layer = event.layer;
+
+        // Додавання нового об'єкта до featureGroup
+        drawnItems.addLayer(layer);
+
+        // Додавання попапу з можливістю зміни назви
+        if (event.layerType === 'marker') {
+          layer
+            .bindPopup('<b>Нова точка!</b><br>Координати: ' + layer.getLatLng())
+            .openPopup();
+        } else if (event.layerType === 'polygon') {
+          layer.bindPopup('<b>Новий полігон!</b>').openPopup();
+        } else if (event.layerType === 'polyline') {
+          layer.bindPopup('<b>Нова лінія!</b>').openPopup();
+        } else if (event.layerType === 'rectangle') {
+          layer.bindPopup('<b>Новий прямокутник!</b>').openPopup();
+        }
+      });
+
+      // Обробка подій редагування об'єктів
+      map.on(L.Draw.Event.EDITED, function (event) {
+        const layers = event.layers;
+        layers.eachLayer(function (layer) {
+          // Наприклад, можна оновити попап з новою інформацією після редагування
+          layer.bindPopup("<b>Об'єкт змінено!</b>").openPopup();
+        });
+      });
+
+      // Обробка подій видалення об'єктів
+      map.on(L.Draw.Event.DELETED, function (event) {
+        alert("Об'єкт видалено!");
       });
     </script>
     <script src="./js/menu/openMenu.js"></script>
