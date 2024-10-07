@@ -154,20 +154,6 @@
             </li>
           </ul>
         </div>
-        <div class="mailing-container">
-          <span class="mailing-container__text">Підпишіться на розсилку</span>
-          <form class="mailing-container__form">
-            <label class="mailing-container__label">
-              <input
-                type="email"
-                class="mailing-container__input"
-                placeholder="E-mail" />
-            </label>
-            <button type="submit" class="button button-sumbit">
-              <span class="button-text">Підписатися</span>
-            </button>
-          </form>
-        </div>
       </div>
     </footer>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -175,22 +161,24 @@
 
     <script>
       // Ініціалізація карти
-      const map = L.map('map').setView([51.16028, 25.788378], 13);
+      const map = L.map('map').setView([51.1601, 25.7890], 13);
 
       // Додаємо шар OpenStreetMap
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
       }).addTo(map);
 
-      L.marker([51.760842, 9.404996])
-        .addTo(map)
-        .bindPopup('Boffzen')
-        .openPopup();
-
-      L.marker([51.16028, 25.788378])
+    
+    L.marker([51.1601, 25.7890])
         .addTo(map)
         .bindPopup('Це Куликовичі')
         .openPopup();
+
+    //   L.marker([51.760842, 9.404996])
+    //     .addTo(map)
+    //     .bindPopup('Boffzen')
+    //     .openPopup();
+
 
       // Ініціалізація featureGroup для зберігання всіх доданих об'єктів
       const drawnItems = new L.FeatureGroup();

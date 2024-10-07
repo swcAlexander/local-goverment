@@ -364,7 +364,7 @@ form button:hover {
 .footer__logo {
   display: inline-block;
   margin-bottom: 20px;
-  font-family: Raleway, sans-serif;
+  /* font-family: Raleway, sans-serif; */
   font-weight: 700;
   font-size: 26px;
   line-height: 1.1923;
@@ -482,70 +482,4 @@ form button:hover {
 }
 .footer .social-links__icon {
   fill: var(--primary-white-color);
-}
-
-.mailing-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 570px;
-}
-@media screen and (min-width: 768px) {
-  .mailing-container {
-    margin-top: 60px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .mailing-container {
-    align-items: flex-start;
-    margin-top: 0;
-    margin-left: auto;
-  }
-}
-
-.mailing-container__text {
-  display: block;
-  margin-bottom: 20px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.1428;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--primary-white-color);
-}
-
-.mailing-container__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-@media screen and (min-width: 1200px) {
-  .mailing-container__form {
-    flex-direction: row;
-  }
-}
-
-.mailing-container__input {
-  width: 358px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
-  border-radius: 4px;
-  background-color: var(--accent-background-color);
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
-  letter-spacing: 0.03em;
-  color: rgba(255, 255, 255, 0.6);
-}
-@media screen and (max-width: 400px) {
-  .mailing-container__input {
-    width: 100%;
-  }
 }
