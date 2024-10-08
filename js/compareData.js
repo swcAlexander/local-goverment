@@ -1,8 +1,10 @@
-/*  Функція для порівняння даних. */
+import { sendSMS } from "./sendTwilioMessage";
+
+
 export const compareData = (data1, data2, col1Index, col2Index) =>{
     const result = [];
     if (data1.length > 0) {
-        result.push(data1[0]);
+        result.push([...data1[0], "Phone"]); 
     }
 
     data1.forEach(row1 => {
@@ -10,14 +12,18 @@ export const compareData = (data1, data2, col1Index, col2Index) =>{
         if (!cell1) return;
 
         data2.forEach(row2 => {
-            const cell2 = Number(row2[col2Index]);
-            if (!cell2) return;
+          const cell2 = Number(row2[col2Index]);
+          const phone = row2[col2Index + 1]; 
+          
+          if (!cell2 || !phone) return;
 
-            if (cell1 === cell2) {
-                result.push(row1);
-            }
+          if (cell1 === cell2) {
+            const rowWithPhone = [...row1, phone]; 
+            result.push(rowWithPhone);
+
+            sendSMS(phone, "У вас є неоплачені податкові зобов'язання. За деталями зверніться до старости старостинського округу.");
+          }
         });
     });
-
     return result;
 }
