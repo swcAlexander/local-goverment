@@ -518,3 +518,15 @@ form button:hover {
   font-size: 18px;
   font-weight: 800;
 }
+
+/*------------------------------PDF Tools-------------------------------*/
+.tools-section {
+  flex-wrap: wrap;
+  gap: 30px;
+
+}
+.tools-section__container {
+  width: 280px;
+  height: 200px;
+  padding: 30px;
+}

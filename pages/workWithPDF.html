@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Tools</title>
+    <link rel="stylesheet" href="../index.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="./" class="logo">
+                <img src="../images/Frame 1321314720.svg" alt="" width="48px" />
+                <p class="logo-par">LOCAL GOVERNMENT</p>
+            </a>
+            <nav class="header-nav">
+                <ul class="header-nav__list">
+                    <li class="header-nav__item"><a href="../index.html">Kulykovychi</a></li>
+                    <li class="header-nav__item">
+                        <a href="./compare.html">Excel compare</a>
+                    </li>
+                    <li class="header-nav__item"><a href="./workWithPDF.html">PDF Tools</a></li>
+                    <li class="header-nav__item">
+                        <a href="./about.html">About</a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="menu_toggle is_open_menu" id="menu_toggle" aria-controls="mobile_menu">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clipRule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile_menu" class="menu_container">
+            <button id="menu_toggle_close" class="menu_toggle-close hidden">
+                <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </button>
+
+            <ul id="main_menu" class="mobile_menu">
+                <li><a href="../index.html" class="link">Kulykovychi</a></li>
+                <li><a href="./compare.html" class="link">Excel compare</a></li>
+                <li><a href="./workWithPDF.html">PDF Tools</a></li>
+                <li><a href="./about.html" class="link">About</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <h1 class="hidden">PDF Tools</h1>
+        <section class="container tools-section">
+            
+        
+            <!-- Зменшення PDF -->
+            <div class="tools-section__container">
+                <h2>Зменшення PDF</h2>
+                <input type="file" id="compressPdfInput" accept="application/pdf">
+                <div>
+                    <label for="compressionQuality">Якість стиснення:</label>
+                    <select id="compressionQuality">
+                        <option value="0.9">Висока (90%)</option>
+                        <option value="0.7" selected>Середня (70%)</option>
+                        <option value="0.5">Низька (50%)</option>
+                        <option value="0.3">Дуже низька (30%)</option>
+                    </select>
+                </div>
+                <button id="compressButton">Зменшити розмір</button>
+            </div>
+        
+            <!-- Об'єднання PDF -->
+            <div class="tools-section__container">
+                <h2>Об'єднання PDF</h2>
+                <input type="file" id="mergePdfInput1" accept="application/pdf">
+                <input type="file" id="mergePdfInput2" accept="application/pdf">
+                <button onclick="mergePDFs()">Об'єднати</button>
+            </div>
+        
+            <!-- Роз'єднання PDF -->
+            <div class="tools-section__container">
+                <h2>Роз'єднання PDF</h2>
+                <input type="file" id="splitPdfInput" accept="application/pdf">
+                <button onclick="splitPDF()">Роз'єднати</button>
+            </div>
+        
+            <!-- Конвертація PDF в JPEG -->
+            <div class="tools-section__container">
+                <h2>Конвертація PDF в JPEG</h2>
+                <input type="file" id="convertPdfToJpegInput" accept="application/pdf">
+                <button onclick="convertPDFToJPEG()">Конвертувати в JPEG</button>
+            </div>
+        
+            <!-- Конвертація JPEG в PDF -->
+            <div class="tools-section__container">
+                <h2>Конвертація JPEG в PDF</h2>
+                <input type="file" id="convertJpegToPdfInput" accept="image/jpeg">
+                <button onclick="convertJPEGToPDF()">Конвертувати в PDF</button>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <a href="./" class="footer__logo">
+                    <span class="logo-par footer__logo--color-white">LOCAL GOVERMANT</span>
+                </a>
+                <address class="footer__address">
+                    <ul class="footer__list list">
+                        <li>
+                            <p class="footer__text">с. Куликовичі, вул. Перемоги, 12</p>
+                            <p class="footer__text">Луцький район, Волинська область</p>
+                        </li>
+                        <li><a class="footer__item">kulikovychi@gmail.com</a></li>
+                    </ul>
+                </address>
+            </div>
+            <div class="social-container">
+                <h3 class="social-container__title">Приєднуйтесь</h3>
+                <ul class="social-links">
+                    <li class="social-links__item">
+                        <a href="/" class="social-links__link">
+                            <svg class="social-links__icon">
+                                <use href="../images/icons.svg#icon-instagram" width="20px" height="20px"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social-links__item">
+                        <a href="/" class="social-links__link">
+                            <svg class="social-links__icon">
+                                <use href="../images/icons.svg#icon-twitter" width="20px" height="20px"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social-links__item">
+                        <a href="/" class="social-links__link">
+                            <svg class="social-links__icon">
+                                <use href="../images/icons.svg#icon-facebook" width="20px" height="20px"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social-links__item">
+                        <a href="/" class="social-links__link">
+                            <svg class="social-links__icon">
+                                <use href="../images/icons.svg#icon-linkedin" width="20px" height="20px"></use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="https://unpkg.com/pdf-lib"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.0/dist/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+    </script>
+        <script>
+            document.getElementById('compressButton').addEventListener('click', () => {
+                    const quality = parseFloat(document.getElementById('compressionQuality').value);
+                    compressPDF(quality);
+                });
+            // Зменшення PDF з кращою якістю
+            async function compressPDF(compressionQuality = 0.7) { // Значення за замовчуванням 0.7 (70% якості)
+                    if (typeof pdfjsLib === 'undefined') {
+                        throw new Error('PDF.js library is not loaded');
+                    }
+
+                    const fileInput = document.getElementById('compressPdfInput');
+                    const file = fileInput.files[0];
+
+                    if (!file) return;
+
+                    try {
+                        const originalName = file.name.split('.')[0];
+                        const newFileName = `${originalName}-compressed.pdf`;
+
+                        const arrayBuffer = await file.arrayBuffer();
+                        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                        const newPdf = await PDFLib.PDFDocument.create();
+
+                        // Показуємо прогрес стиснення
+                        const totalPages = pdf.numPages;
+                        let processedPages = 0;
+
+                        for (let i = 0; i < pdf.numPages; i++) {
+                            const page = await pdf.getPage(i + 1);
+                            const viewport = page.getViewport({ scale: 1 });
+
+                            const canvas = document.createElement('canvas');
+                            const context = canvas.getContext('2d');
+                            canvas.width = viewport.width;
+                            canvas.height = viewport.height;
+
+                            await page.render({
+                                canvasContext: context,
+                                viewport: viewport
+                            }).promise;
+
+                            // Використовуємо параметр якості при стисненні
+                            const compressedImage = await new Promise(resolve => {
+                                canvas.toBlob(blob => {
+                                    resolve(blob);
+                                }, 'image/jpeg', compressionQuality); // Значення від 0 до 1
+                            });
+
+                            const compressedArrayBuffer = await compressedImage.arrayBuffer();
+                            const image = await newPdf.embedJpg(compressedArrayBuffer);
+
+                            const newPage = newPdf.addPage([viewport.width, viewport.height]);
+                            newPage.drawImage(image, {
+                                x: 0,
+                                y: 0,
+                                width: viewport.width,
+                                height: viewport.height
+                            });
+
+                            // Оновлюємо прогрес
+                            processedPages++;
+                            console.log(`Processed ${processedPages} of ${totalPages} pages`);
+                        }
+
+                        const compressedBytes = await newPdf.save({
+                            useObjectStreams: true,
+                            addDefaultPage: false,
+                            useLinearization: true,
+                            compress: true
+                        });
+
+                        // Показуємо інформацію про стиснення
+                        const originalSize = file.size / 1024;
+                        const compressedSize = compressedBytes.length / 1024;
+                        console.log(`Original size: ${originalSize.toFixed(2)} KB`);
+                        console.log(`Compressed size: ${compressedSize.toFixed(2)} KB`);
+                        console.log(`Compression ratio: ${(100 - (compressedSize / originalSize) * 100).toFixed(2)}%`);
+
+                        const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+                        const url = URL.createObjectURL(blob);
+
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = newFileName;
+                        a.click();
+
+                        URL.revokeObjectURL(url);
+
+                    } catch (error) {
+                        console.error('Error during compression:', error);
+                        alert('Помилка при стисненні PDF. Спробуйте інший файл.');
+                    }
+                }
+
+            // Об'єднання PDF
+            async function mergePDFs() {
+                const fileInput1 = document.getElementById('mergePdfInput1');
+                const fileInput2 = document.getElementById('mergePdfInput2');
+
+                const file1 = fileInput1.files[0];
+                const file2 = fileInput2.files[0];
+
+                if (file1 && file2) {
+                    const newFileName = createSafeFileName(file1.name, 'merged.pdf');
+                    const arrayBuffer1 = await file1.arrayBuffer();
+                    const arrayBuffer2 = await file2.arrayBuffer();
+
+                    const pdfDoc1 = await PDFLib.PDFDocument.load(arrayBuffer1);
+                    const pdfDoc2 = await PDFLib.PDFDocument.load(arrayBuffer2);
+
+                    const mergedPdfDoc = await PDFLib.PDFDocument.create();
+                    const pages1 = await mergedPdfDoc.copyPages(pdfDoc1, pdfDoc1.getPageIndices());
+                    const pages2 = await mergedPdfDoc.copyPages(pdfDoc2, pdfDoc2.getPageIndices());
+
+                    pages1.forEach((page) => mergedPdfDoc.addPage(page));
+                    pages2.forEach((page) => mergedPdfDoc.addPage(page));
+
+                    const mergedPdf = await mergedPdfDoc.save();
+
+                    const blob = new Blob([mergedPdf], { type: 'application/pdf' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = newFileName;
+                    a.click();
+                }
+            }
+
+            // Роз'єднання PDF з архівацією
+            async function splitPDF() {
+                const fileInput = document.getElementById('splitPdfInput');
+                const file = fileInput.files[0];
+                if (file) {
+                    const newFileName = createSafeFileName(file.name, 'split_pages.zip');
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+                    const zip = new JSZip();
+
+                    for (let i = 0; i < pdfDoc.getPageCount(); i++) {
+                        const newPdfDoc = await PDFLib.PDFDocument.create();
+                        const [page] = await newPdfDoc.copyPages(pdfDoc, [i]);
+                        newPdfDoc.addPage(page);
+
+                        const splitPdf = await newPdfDoc.save();
+                        zip.file(`split_page_${i + 1}.pdf`, splitPdf);
+                    }
+
+                    zip.generateAsync({ type: 'blob' }).then((content) => {
+                        const url = URL.createObjectURL(content);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = newFileName;
+                        a.click();
+                    });
+                }
+            }
+
+            // Конвертація PDF в JPEG
+            async function convertPDFToJPEG() {
+                const fileInput = document.getElementById('convertPdfToJpegInput');
+                const file = fileInput.files[0];
+                if (file) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+                    // Реалізація конвертації в JPEG потребує додаткових бібліотек, як-от pdf2image або canvas
+                }
+            }
+
+            // Конвертація JPEG в PDF
+            async function convertJPEGToPDF() {
+                    const fileInput = document.getElementById('convertJpegToPdfInput');
+                    const file = fileInput.files[0];
+
+                    if (file) {
+
+                        const newFileName = createSafeFileName(file.name, 'converted.pdf');
+
+                        const reader = new FileReader();
+
+                        reader.onload = async (event) => {
+                            const img = new Image();
+                            img.src = event.target.result;
+
+                            await new Promise((resolve) => {
+                                img.onload = resolve;
+                            });
+
+                            const imgWidth = img.width;
+                            const imgHeight = img.height;
+
+                            const pdfDoc = await PDFLib.PDFDocument.create();
+                            const page = pdfDoc.addPage([imgWidth, imgHeight]);
+
+                            const jpgImage = await pdfDoc.embedJpg(event.target.result);
+
+                            page.drawImage(jpgImage, {
+                                x: 0,
+                                y: 0,
+                                width: imgWidth,
+                                height: imgHeight
+                            });
+
+                            const pdf = await pdfDoc.save();
+                            const blob = new Blob([pdf], { type: 'application/pdf' });
+                            const url = URL.createObjectURL(blob);
+
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = newFileName;
+                            a.click();
+
+                            URL.revokeObjectURL(url);
+                        };
+
+                        reader.readAsDataURL(file);
+                    }
+                }
+            // Функція для створення безпечного імені файлу
+            const createSafeFileName = (originalName, suf) => {
+                const nameWithoutExt = originalName.split('.').slice(0, -1).join('.');
+
+                const safeName = nameWithoutExt.replace(/[<>:"/\\|?*\x00-\x1F]/g, '-');
+                return `${safeName}-${suf}`;
+            };
+        </script>
+</body>
+
+</html>
