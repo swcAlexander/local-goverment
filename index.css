@@ -490,7 +490,7 @@ form button:hover {
   font-weight: 600;
   line-height: 1.4;
 
-  color: var(--accent-background-color)
+  color: var(--accent-background-color);
 }
 .about-span {
   font-size: 24px;
@@ -511,7 +511,6 @@ form button:hover {
   font-size: 18px;
   font-weight: 500;
   line-height: 1.2;
-
 }
 
 .about-list__link {
@@ -524,8 +523,9 @@ form button:hover {
   padding: 30px;
   flex-wrap: wrap;
   gap: 30px;
-
+  justify-content: center;
 }
+
 .tools-section h2 {
   color: var(--primary-white-color);
 }
@@ -553,15 +553,10 @@ form button:hover {
   cursor: pointer;
   border: none;
   border-radius: 8px;
-  box-shadow:
-    2px 2px 0px hsl(0, 0%, 90%),
-    4px 4px 0px hsl(0, 0%, 80%),
-    6px 6px 0px hsl(0, 0%, 70%),
-    8px 8px 0px hsl(0, 0%, 60%),
-    10px 10px 0px hsl(0, 0%, 50%),
-    12px 12px 0px hsl(0, 0%, 40%),
-    14px 14px 0px hsl(0, 0%, 30%),
-    16px 16px 0px hsl(0, 0%, 20%),
+  box-shadow: 2px 2px 0px hsl(0, 0%, 90%), 4px 4px 0px hsl(0, 0%, 80%),
+    6px 6px 0px hsl(0, 0%, 70%), 8px 8px 0px hsl(0, 0%, 60%),
+    10px 10px 0px hsl(0, 0%, 50%), 12px 12px 0px hsl(0, 0%, 40%),
+    14px 14px 0px hsl(0, 0%, 30%), 16px 16px 0px hsl(0, 0%, 20%),
     18px 18px 0px hsl(0, 0%, 10%);
 }
 
@@ -596,7 +591,6 @@ form button:hover {
   transition: transform var(--transition) ease;
 }
 
-
 .in-folder:hover {
   transform: scale(1.05);
 }
@@ -610,7 +604,7 @@ form button:hover {
 
 .in-folder .back-side::before,
 .in-folder .back-side::after {
-  content: "";
+  content: '';
   display: block;
   background-color: white;
   opacity: 0.5;
@@ -641,7 +635,7 @@ form button:hover {
 }
 
 .in-folder .tip {
-  background: linear-gradient(135deg, #ff9a56, #ff6f56);
+  background: linear-gradient(135deg, #56ffe3, #5686ff);
   width: 80px;
   height: 20px;
   border-radius: 12px 12px 0 0;
@@ -652,7 +646,7 @@ form button:hover {
 }
 
 .in-folder .cover {
-  background: linear-gradient(135deg, #ffe563, #ffc663);
+  background: linear-gradient(135deg, #eeeff2, #b0b4bc);
   width: var(--folder-W);
   height: var(--folder-H);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
@@ -679,11 +673,25 @@ form button:hover {
   background: rgba(255, 255, 255, 0.4);
 }
 
-.custom-file-upload input[type="file"] {
+.custom-file-upload input[type='file'] {
   display: none;
 }
+#fileList {
+  position: absolute;
+  top: 40%;
+  right: 15%;
+}
+#fileList li {
+  position: relative;
+  width: 160%;
+  height: auto;
+  background-color: rgba(74, 140, 194, 0.4);
+  border: rgba(107, 212, 214, 0), solid;
+  border-radius: 4px;
+  color: var(--title-text-color);
+}
 
-@keyframes float {
+/* @keyframes float {
   0% {
     transform: translateY(0px);
   }
@@ -695,49 +703,4 @@ form button:hover {
   100% {
     transform: translateY(0px);
   }
-}
-
-/*-------------------*/
-
-.container-btn-file {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  background-color: #307750;
-  color: #fff;
-  border-style: none;
-  padding: 1em 2em;
-  border-radius: 0.5em;
-  overflow: hidden;
-  z-index: 1;
-  box-shadow: 4px 8px 10px -3px rgba(0, 0, 0, 0.356);
-  transition: all 250ms;
-}
-
-.container-btn-file input[type="file"] {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.container-btn-file>svg {
-  margin-right: 1em;
-}
-
-.container-btn-file::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 0;
-  border-radius: 0.5em;
-  background-color: #469b61;
-  z-index: -1;
-  transition: all 350ms;
-}
-
-.container-btn-file:hover::before {
-  width: 100%;
-}
+} */
