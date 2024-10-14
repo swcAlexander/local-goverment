@@ -18,10 +18,11 @@ async function handleCompare(event) {
         alert("Будь ласка, виберіть обидва файли.");
         return;
     }
+    
 
-    const data1 = await readXlsxFile(file1, sheet1);
-    const data2 = await readXlsxFile(file2, sheet2);
-    const result = compareData(data1, data2, column1, column2);
+    const data1 = await readXlsxFile(file1, sheet1 || 0);
+    const data2 = await readXlsxFile(file2, sheet2 || 0);
+    const result = compareData(data1, data2, column1 || 3, column2 || 3);
     const blob = createXlsxFile(result);
     downloadFile(blob, 'result.xlsx');
 }

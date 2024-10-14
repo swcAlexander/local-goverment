@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Tools</title>
+    <link rel="stylesheet" href="../index.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="../index.html" class="logo">
+          <img src="../images/Frame 1321314720.svg" alt="" width="48px" />
+          <p class="logo-par">LOCAL GOVERNMENT</p>
+        </a>
+        <nav class="header-nav">
+          <ul class="header-nav__list">
+            <li class="header-nav__item">
+              <a href="../index.html">Kulykovychi</a>
+            </li>
+            <li class="header-nav__item">
+              <a href="./compare.html">Excel compare</a>
+            </li>
+            <li class="header-nav__item">
+              <a href="./workWithPDF.html">PDF Tools</a>
+            </li>
+            <li class="header-nav__item"><a href="./drop.html">Diary</a></li>
+            <li class="header-nav__item">
+              <a href="./about.html">About</a>
+            </li>
+          </ul>
+        </nav>
+        <button
+          class="menu_toggle is_open_menu"
+          id="menu_toggle"
+          aria-controls="mobile_menu">
+          <svg
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              fillRule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clipRule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="mobile_menu" class="menu_container">
+        <button id="menu_toggle_close" class="menu_toggle-close hidden">
+          <svg
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24">
+            <path
+              d="M18 6L6 18M6 6l12 12"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <ul id="main_menu" class="mobile_menu">
+          <li><a href="../index.html" class="link">Kulykovychi</a></li>
+          <li><a href="./compare.html" class="link">Excel compare</a></li>
+          <li><a href="./workWithPDF.html">PDF Tools</a></li>
+          <li><a href="./drop.html">Diary</a></li>
+          <li><a href="./about.html" class="link">About</a></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <h1 class="hidden">PDF Tools</h1>
+      <section class="container tools-section">
+        <!-- Зменшення PDF -->
+        <div class="tools-section__container">
+          <h2>Зменшення PDF</h2>
+          <div class="in-container">
+            <div class="in-folder">
+              <div class="front-side">
+                <div class="tip"></div>
+                <div class="cover"></div>
+              </div>
+              <div class="back-side cover"></div>
+            </div>
+            <label class="custom-file-upload">
+              <input
+                type="file"
+                id="compressPdfInput"
+                accept="application/pdf"
+                class="in-title" />
+              Choose a file
+            </label>
+          </div>
+          <button id="compressButton" class="tools-section__button">
+            Зменшити розмір
+          </button>
+        </div>
+
+        <!-- Об'єднання PDF -->
+        <div class="tools-section__container">
+          <h2>Об'єднання PDF</h2>
+          <div class="in-container">
+            <div class="in-folder">
+              <div class="front-side">
+                <div class="tip"></div>
+                <div class="cover"></div>
+              </div>
+              <div class="back-side cover"></div>
+            </div>
+            <label class="custom-file-upload">
+              <input
+                type="file"
+                id="mergePdfInput"
+                accept="application/pdf"
+                class="in-title" />
+              Choose a file
+            </label>
+          </div>
+
+          <button id="compressMerge" class="tools-section__button">
+            Об'єднати
+          </button>
+          <ul id="fileList"></ul>
+          <!-- Список доданих файлів -->
+        </div>
+
+        <!-- Роз'єднання PDF -->
+        <div class="tools-section__container">
+          <h2>Роз'єднання PDF</h2>
+          <div class="in-container">
+            <div class="in-folder">
+              <div class="front-side">
+                <div class="tip"></div>
+                <div class="cover"></div>
+              </div>
+              <div class="back-side cover"></div>
+            </div>
+            <label class="custom-file-upload">
+              <input
+                type="file"
+                id="splitPdfInput"
+                accept="application/pdf"
+                class="tools-section__input" />
+              Choose a file
+            </label>
+          </div>
+
+          <button id="compressSplit" class="tools-section__button">
+            Роз'єднати
+          </button>
+        </div>
+
+        <!-- Конвертація PDF в JPEG -->
+        <div class="tools-section__container">
+          <h2>Конвертація PDF в JPEG</h2>
+          <div class="in-container">
+            <div class="in-folder">
+              <div class="front-side">
+                <div class="tip"></div>
+                <div class="cover"></div>
+              </div>
+              <div class="back-side cover"></div>
+            </div>
+            <label class="custom-file-upload">
+              <input
+                type="file"
+                id="convertPdfToJpegInput"
+                accept="application/pdf"
+                class="tools-section__input" />
+              Choose a file
+            </label>
+          </div>
+
+          <button id="convertPDFToJPEG" class="tools-section__button">
+            Конвертувати в JPEG
+          </button>
+        </div>
+
+        <!-- Конвертація JPEG в PDF -->
+        <div class="tools-section__container">
+          <h2>Конвертація JPEG в PDF</h2>
+          <div class="in-container">
+            <div class="in-folder">
+              <div class="front-side">
+                <div class="tip"></div>
+                <div class="cover"></div>
+              </div>
+              <div class="back-side cover"></div>
+            </div>
+            <label class="custom-file-upload">
+              <input
+                type="file"
+                id="convertJpegToPdfInput"
+                accept="image/jpeg"
+                class="tools-section__input" />
+              Choose a file
+            </label>
+          </div>
+
+          <button id="convertJPEGToPDF" class="tools-section__button">
+            Конвертувати в PDF
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__content">
+          <a href="./" class="footer__logo">
+            <span class="logo-par footer__logo--color-white"
+              >LOCAL GOVERMANT</span
+            >
+          </a>
+          <address class="footer__address">
+            <ul class="footer__list list">
+              <li>
+                <p class="footer__text">с. Куликовичі, вул. Перемоги, 12</p>
+                <p class="footer__text">Луцький район, Волинська область</p>
+              </li>
+              <li><a class="footer__item">kulikovychi@gmail.com</a></li>
+            </ul>
+          </address>
+        </div>
+        <div class="social-container">
+          <h3 class="social-container__title">Приєднуйтесь</h3>
+          <ul class="social-links">
+            <li class="social-links__item">
+              <a href="/" class="social-links__link">
+                <svg class="social-links__icon">
+                  <use
+                    href="../images/icons.svg#icon-instagram"
+                    width="20px"
+                    height="20px"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-links__item">
+              <a href="/" class="social-links__link">
+                <svg class="social-links__icon">
+                  <use
+                    href="../images/icons.svg#icon-twitter"
+                    width="20px"
+                    height="20px"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-links__item">
+              <a href="/" class="social-links__link">
+                <svg class="social-links__icon">
+                  <use
+                    href="../images/icons.svg#icon-facebook"
+                    width="20px"
+                    height="20px"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-links__item">
+              <a href="/" class="social-links__link">
+                <svg class="social-links__icon">
+                  <use
+                    href="../images/icons.svg#icon-linkedin"
+                    width="20px"
+                    height="20px"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/pdf-lib"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.0/dist/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+    </script>
+    <script src="../js/pdfTools.js"></script>
+  </body>
+</html>
