@@ -167,19 +167,16 @@
 <script src="https://cdn.jsdelivr.net/npm/leaflet-measure/dist/leaflet-measure.js"></script>
 
 <script>
-  // Ініціалізація карти з правильним центром і масштабом
   const map = L.map('map', {
     center: [51.1601, 25.7890],
     zoom: 13
   });
 
-  // Додавання тайлів OpenStreetMap
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 30,
     detectRetina: true,
   }).addTo(map);
 
-  // Додавання маркерів
   // L.marker([51.760842, 9.404996])
   //   .addTo(map)
   //   .bindPopup('Boffzen');
@@ -188,7 +185,6 @@
     .addTo(map)
     .bindPopup('Це Куликовичі');
 
-  // Група для намальованих об'єктів
   const drawnItems = new L.FeatureGroup();
   map.addLayer(drawnItems);
 
@@ -199,7 +195,7 @@
       measuring = !measuring;
       if (measuring) {
         this.innerHTML = 'Завершити вимірювання';
-        measurementPoints = []; // Очищення попередніх точок
+        measurementPoints = [];
         alert('Клікніть на карту, щоб додати точки. Клацніть знову, щоб завершити вимірювання.');
       } else {
         this.innerHTML = 'Почати вимірювання';
@@ -212,7 +208,6 @@
       }
     };
 
-    // Додавання маркерів на клік
     map.on('click', function (e) {
       if (measuring) {
         const latlng = e.latlng;
@@ -221,7 +216,6 @@
       }
     });
 
-    // Додавання контролю для малювання
     const drawControl = new L.Control.Draw({
       edit: {
         featureGroup: drawnItems,
@@ -242,7 +236,6 @@
 
   map.addControl(drawControl);
 
-  // Подія створення об'єкта
   map.on(L.Draw.Event.CREATED, function (event) {
     const layer = event.layer;
     drawnItems.addLayer(layer);
@@ -252,10 +245,10 @@
         .bindPopup('<b>Нова точка!</b><br>Координати: ' + layer.getLatLng())
         .openPopup();
     } else if (event.layerType === 'polygon') {
-      const area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]); // Обчислення площі
+      const area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
       layer.bindPopup('<b>Полігон!</b><br>Площа: ' + area.toFixed(2) + ' м²').openPopup();
     } else if (event.layerType === 'rectangle') {
-      const area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]); // Обчислення площі
+      const area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
       layer.bindPopup('<b>Прямокутник!</b><br>Площа: ' + area.toFixed(2) + ' м²').openPopup();
     } else if (event.layerType === 'polyline') {
       const length = layer.getLatLngs().reduce((acc, point, index) => {
@@ -266,7 +259,6 @@
     }
   });
 
-  // Подія редагування об'єкта
   map.on(L.Draw.Event.EDITED, function (event) {
     const layers = event.layers;
     layers.eachLayer(function (layer) {
@@ -274,7 +266,7 @@
     });
   });
 
-  // Подія видалення об'єкта
+  
   map.on(L.Draw.Event.DELETED, function (event) {
     alert("Об'єкт видалено!");
   });
